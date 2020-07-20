@@ -3,16 +3,16 @@
 # Define script variables #
 ###########################
 # Define the cluster name or IP
-CLUSTER="10.193.67.10"
+CLUSTER="your cluster"
 # Define the volume name if querying a specific volume 
-VOLUME="lotsafiles"
+VOLUME="your volume"
 # Define the SVM name
-SVM="DEMO"
+SVM="your SVM"
 # Set the increase and threshold percent to use with the script
 MAXFILE_PERCENT_INCREASE="5"
 MAXFILE_THRESHOLD="80"
 # Get auth token from system manager at https://cluster/docs/api/
-AUTH_TOK="YWRtaW46bmV0YXBwMSE="
+AUTH_TOK="your token"
 
 ## Find max files and files used for all volumes
 #curl -X GET "https://$CLUSTER/api/storage/volumes?fields=files&return_records=true&return_timeout=15" -k -H "accept: application/json" -H "authorization: Basic $AUTH_TOK"
