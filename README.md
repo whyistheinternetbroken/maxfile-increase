@@ -15,8 +15,9 @@ You can also get a percent-used value with:
 
 ONTAP has no built-in automation to increase the inode counts and it's generally recommended to avoid increasing the maximum files to the highest value possible. These scripts help automate increase of maxfiles in ONTAP to avoid "Out of Inodes" errors. 
 
-Available for SSH, REST (ONTAP 9.6 and later) and for use with ActiveIQ Unified Manager.
+Available for REST (ONTAP 9.6 and later) and for use with ActiveIQ Unified Manager.
+NOTE: SSH output not easily parsed; ZAPI being deprecated in future releases.
 
-* The SSH/REST scripts can be run with a cron schedule to periodically check the amount of used inodes against the total inodes with a configurable threshold and then take corrective action to increase the maximum inode count by a specified percentage.
+* The REST script can be run with a cron schedule to periodically check the amount of used inodes against the total inodes with a configurable threshold and then take corrective action to increase the maximum inode count by a specified percentage.
 
 * The ActiveIQ Unified Manager script can be used in conjunction with ActiveIQ's built-in inode monitoring capabilities.
