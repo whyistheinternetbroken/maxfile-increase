@@ -1,4 +1,4 @@
-# maxfile-increase
+About the maxfile-monitor script
 In ONTAP, volumes have a set number of maximum inodes, which limits the number of files and folders that can be placed in a volume. If that number hits 100%, clients will report the volume is "out of space," even if capacity seems to be fine. In the ONTAP cluster, you will see event logs that show the volume is "out of inodes."
 
 The maximum number of inodes/files is controlled with the -files option in the ONTAP CLI. The default number of inodes is dependent on the total size of the volume. For details on maxfiles, see TR-4571:
@@ -13,11 +13,61 @@ You can also get a percent-used value with:
 
 ::*> df -i volname
 
-ONTAP has no built-in automation to increase the inode counts and it's generally recommended to avoid increasing the maximum files to the highest value possible. These scripts help automate increase of maxfiles in ONTAP to avoid "Out of Inodes" errors. 
+ONTAP has no built-in automation to increase the inode counts and it's generally recommended to avoid increasing the maximum files to the highest value possible. These scripts help automate increase of maxfiles in ONTAP to avoid "Out of Inodes" errors by monitoring the % used and increasing in smaller increments.
 
-Available for REST (ONTAP 9.6 and later) and for use with ActiveIQ Unified Manager.
-NOTE: SSH output not easily parsed; ZAPI being deprecated in future releases.
+Available for REST (ONTAP 9.6 and later).
 
 * The REST script can be run with a cron schedule to periodically check the amount of used inodes against the total inodes with a configurable threshold and then take corrective action to increase the maximum inode count by a specified percentage.
 
-* The ActiveIQ Unified Manager script can be used in conjunction with ActiveIQ's built-in inode monitoring capabilities.
+Example output of script:
+
+Fetching volume maxfiles information...
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   265  100   265    0     0   4602      0 --:--:-- --:--:-- --:--:--  4649
+
+====================================================================================================
+
+--------------------------------------------------
+Script started at: Mon Apr  7 14:39:06 UTC 2025
+--------------------------------------------------
+
+ONTAP VOLUME MAXFILES INFORMATION
+-------------------------------------------------------------------------------------------------------
+| Volume Name  | Volume UUID                          | Total files | Total files used | % Files used |
+-------------------------------------------------------------------------------------------------------
+| fvfiles      | f23a19cb-fac1-11eb-a4b1-d039ea1b5c57 | 35954675    | 34242546         | 95           |
+-------------------------------------------------------------------------------------------------------
+
+********************************************WARNING********************************************
+ 95% inodes used for volume "fvfiles" is greater than the configured maxfile threshold of 80%.
+***********************************************************************************************
+
+Maxfiles value for the volume will be increased by 5%.
+
+Fetching updated volume maxfiles information...
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   265  100   265    0     0   4647      0 --:--:-- --:--:-- --:--:--  4732
+
+--------------------------------------------------
+| Total inodes increased by       |      1797733 |
+| New maxfiles value for volume   |     37752408 |
+| Percent increase                |           5% |
+--------------------------------------------------
+
+NEW ONTAP VOLUME MAXFILES INFORMATION
+-------------------------------------------------------------------------------------------------------
+| Volume Name  | Volume UUID                          | Total files | Total files used | % Files used |
+-------------------------------------------------------------------------------------------------------
+| fvfiles      | f23a19cb-fac1-11eb-a4b1-d039ea1b5c57 | 37752396    | 34242546         | 90           |
+-------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------
+Script finished at: Mon Apr  7 14:39:11 UTC 2025
+--------------------------------------------------
+
+Done!
