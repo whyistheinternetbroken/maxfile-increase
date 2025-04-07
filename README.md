@@ -4,8 +4,7 @@ In ONTAP, volumes have a set number of maximum inodes, which limits the number o
 
 The maximum number of inodes/files is controlled with the -files option in the ONTAP CLI. The default number of inodes is dependent on the total size of the volume. 
 
-For details on maxfiles, see TR-4571:
-
+For details on maxfiles, see TR-4571:  
 [FlexGroup best practices TR](https://www.netapp.com/us/media/tr-4571.pdf)  
 
 Also:  
