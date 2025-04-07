@@ -19,6 +19,7 @@ You can also get a percent-used value with:
 ::*> df -i volname
 ```
 
+
 ONTAP has no built-in automation to increase the inode counts and it's generally recommended to avoid increasing the maximum files to the highest value possible. These scripts help automate increase of maxfiles in ONTAP to avoid "Out of Inodes" errors by monitoring the % used and increasing in smaller increments.
 
 Available for REST (ONTAP 9.6 and later).
@@ -45,7 +46,7 @@ The following variables need to be set in the script to ensure proper functional
 To authenticate to the cluster to run REST API calls, you will need to generate an auth token.
 
 The following link covers this process:
-[Overview of the ONTAP OAuth 2.0 implementation in ONTAP](https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html#implementation-and-configuration)
+[Overview of the ONTAP OAuth 2.0 implementation in ONTAP](https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html#implementation-and-configuration)  
 
 ### Example output of script:
 ```
