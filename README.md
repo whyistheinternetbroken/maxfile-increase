@@ -53,7 +53,7 @@ You can run the script as a container by doing the following.
 
 1. Clone the repository
 ```
-git clone
+git clone https://github.com/whyistheinternetbroken/maxfile-increase
 ```
 3. Build the container by running the command in the folder with the Docker file
 ```
