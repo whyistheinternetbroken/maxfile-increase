@@ -2,9 +2,15 @@
 
 In ONTAP, volumes have a set number of maximum inodes, which limits the number of files and folders that can be placed in a volume. If that number hits 100%, clients will report the volume is "out of space," even if capacity seems to be fine. In the ONTAP cluster, you will see event logs that show the volume is "out of inodes."
 
-The maximum number of inodes/files is controlled with the -files option in the ONTAP CLI. The default number of inodes is dependent on the total size of the volume. For details on maxfiles, see TR-4571:
+The maximum number of inodes/files is controlled with the -files option in the ONTAP CLI. The default number of inodes is dependent on the total size of the volume. 
 
-https://www.netapp.com/us/media/tr-4571.pdf
+For details on maxfiles, see TR-4571:
+
+[https://www.netapp.com/us/media/tr-4571.pdf
+](FlexGroup best practices TR)
+
+Also:
+[https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/FAQ_ONTAP_maximum_number_of_inodes_maxfiles](FAQ - ONTAP maximum number of inodes (maxfiles))
 
 To view the maximum files/files used, run this command from the ONTAP CLI:
 ```
@@ -23,7 +29,30 @@ Available for REST (ONTAP 9.6 and later).
 
 * The REST script can be run with a cron schedule to periodically check the amount of used inodes against the total inodes with a configurable threshold and then take corrective action to increase the maximum inode count by a specified percentage.
 
-Example output of script:
+## Setting variables
+
+The following variables need to be set in the script to ensure proper functionality.
+
+* Cluster DNS name or IP address (CLUSTER)
+  - This is used to connect REST API calls
+* Volume name (VOLUME)
+* Storage virtual machine name (SVM)
+* Maxfiles threshold (MAXFILE_THRESHOLD)
+  - This configures the maxfile % used threshold for the monitor to kick off the maxfile increase
+* Maxfiles percent increase (MAXFILE_PERCENT_INCREASE)
+  - The % of increase for maxfiles
+* Authorization token (AUTH_TOK)
+  - The auth token for REST calls
+* Log file path (LOG_PATH)
+
+## Getting an auth token for REST
+To authenticate to the cluster to run REST API calls, you will need to generate an auth token.
+
+The following link covers this process:
+[https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html#implementation-and-configuration
+](Overview of the ONTAP OAuth 2.0 implementation in ONTAP)
+
+### Example output of script:
 ```
 Fetching volume maxfiles information...
 
