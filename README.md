@@ -45,14 +45,14 @@ The following variables need to be set in the script to ensure proper functional
 ## Getting an auth token for REST
 To authenticate to the cluster to run REST API calls, you will need to generate an auth token.
 
-The following link covers this process:
+The following link covers this process:  
 [Overview of the ONTAP OAuth 2.0 implementation in ONTAP](https://docs.netapp.com/ontap/authentication/overview-oauth2.html#implementation-and-configuration)  
 
 
 ## Configuring a security login role
 In ONTAP, you can configure security login roles to minimize the exposure to the storage by limiting the commands allowed to a specific user. For this maxfile monitor, it is recommended to configure a security login role and user to reduce potential impact in case of security breach.  
 
-The following link covers security roles in ONTAP:
+The following link covers security roles in ONTAP:  
 [ONTAP roles, applications, and authentication](https://docs.netapp.com/ontap/ontap-security-hardening/roles-applications-authentication.html#roles) 
 
 
