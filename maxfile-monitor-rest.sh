@@ -101,6 +101,10 @@ monitor_files()
     printf "| %-12s | %-36s | %-11d | %-16d | %-12d |\n" "$VOLUME" "$VOL_UUID" "$TOTAL_FILES" "$USED_FILES" "$PERCENT_USED"
     print_dash_separator 103
     echo
+    if ! [[ "$MAXFILE_PERCENT_INCREASE" =~ ^[0-9]+$ ]] || [ "$MAXFILE_PERCENT_INCREASE" -lt 1 ] || [ "$MAXFILE_PERCENT_INCREASE" -gt 100 ]; then
+        echo "Error: MAXFILE_PERCENT_INCREASE variable must be a number between 1 and 100. Change variable in script and retry."
+        exit 1
+    fi
     if [ "$PERCENT_USED" -gt "$MAXFILE_THRESHOLD" ]; then
         echo "********************************************WARNING********************************************"
         echo " $PERCENT_USED% inodes used for volume \"$VOLUME\" is greater than the configured maxfile threshold of $MAXFILE_THRESHOLD%."
