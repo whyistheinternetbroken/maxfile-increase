@@ -6,11 +6,10 @@ The maximum number of inodes/files is controlled with the -files option in the O
 
 For details on maxfiles, see TR-4571:
 
-[https://www.netapp.com/us/media/tr-4571.pdf
-](FlexGroup best practices TR)
+[FlexGroup best practices TR](https://www.netapp.com/us/media/tr-4571.pdf)
 
 Also:
-[https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/FAQ_ONTAP_maximum_number_of_inodes_maxfiles](FAQ - ONTAP maximum number of inodes (maxfiles))
+[FAQ - ONTAP maximum number of inodes (maxfiles)](https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/FAQ_ONTAP_maximum_number_of_inodes_maxfiles)
 
 To view the maximum files/files used, run this command from the ONTAP CLI:
 ```
@@ -49,8 +48,7 @@ The following variables need to be set in the script to ensure proper functional
 To authenticate to the cluster to run REST API calls, you will need to generate an auth token.
 
 The following link covers this process:
-[https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html#implementation-and-configuration
-](Overview of the ONTAP OAuth 2.0 implementation in ONTAP)
+[Overview of the ONTAP OAuth 2.0 implementation in ONTAP](https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html#implementation-and-configuration)
 
 ### Example output of script:
 ```
