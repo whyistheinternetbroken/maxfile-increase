@@ -48,6 +48,21 @@ To authenticate to the cluster to run REST API calls, you will need to generate 
 The following link covers this process:
 [Overview of the ONTAP OAuth 2.0 implementation in ONTAP](https://docs.netapp.com/us-en/ontap/authentication/overview-oauth2.html#implementation-and-configuration)  
 
+## Using docker to run script as a container
+You can run the script as a container by doing the following.
+
+1. Clone the repository
+```
+git clone
+3. Build the container by running the command in the folder with the Docker file
+```
+docker build -t maxfile-monitor .
+```
+3. Run the container with the following command
+```
+docker run --rm maxfile-monitor
+```
+
 ### Example output of script:
 ```
 Fetching volume maxfiles information...
