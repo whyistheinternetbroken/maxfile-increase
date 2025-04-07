@@ -22,7 +22,7 @@ You can also get a percent-used value with:
 
 ONTAP has no built-in automation to increase the inode counts and it's generally recommended to avoid increasing the maximum files to the highest value possible. These scripts help automate increase of maxfiles in ONTAP to avoid "Out of Inodes" errors by monitoring the % used and increasing in smaller increments.
 
-Available for REST (ONTAP 9.6 and later).
+* Available for REST (ONTAP 9.6 and later).
 
 * The REST script can be run with a cron schedule to periodically check the amount of used inodes against the total inodes with a configurable threshold and then take corrective action to increase the maximum inode count by a specified percentage.
 
